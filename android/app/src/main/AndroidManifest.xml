@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ruta_limpia">
+    package="com.example.rutalimpia_frontend">
    <application
-        android:label="ruta_limpia"
+        android:label="rutalimpia_frontend"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
