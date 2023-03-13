@@ -4,7 +4,7 @@ import 'package:rutalimpia_frontend/screens/first_screen.dart';
 import 'package:rutalimpia_frontend/screens/home_page.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:rutalimpia_frontend/screens/login_screen.dart';
-
+import 'package:rutalimpia_frontend/screens/register_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,17 +22,17 @@ class MyApp extends StatelessWidget {
       home: 
       AnimatedSplashScreen(
         splash: Image.asset(
-          'assets/trashtruck.png',
+          'assets/camion.png',
         ),
         nextScreen: const HomePage() ,
         pageTransitionType: PageTransitionType.bottomToTop,
-        backgroundColor: const Color.fromARGB(255, 27, 185, 34),
+        backgroundColor: const Color.fromARGB(255, 42,	202,	170),
         duration: 6000,
       ),
       routes: {
         '/first' :(context) => const firstscreen(),
-        '/login' :(context) => const loginsreen()
-
+        '/login' :(context) => const loginsreen(),
+        '/register':(context) => const registerscreen()
       }
       
     );

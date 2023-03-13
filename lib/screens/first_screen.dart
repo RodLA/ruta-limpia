@@ -52,7 +52,7 @@ class _firstscreenState extends State<firstscreen> {
               },     
               style: ButtonStyle(            
                 fixedSize: MaterialStateProperty.all(const Size(300, 50)),
-                backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 18, 184, 26)),
+                backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 42	,202	,170)),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),

@@ -152,7 +152,7 @@ class _loginsreenState extends State<loginsreen> {
                           ),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, "/login");
+                        Navigator.pushNamed(context, "/register");
                       },
                       child: const Text('Registrarse',style: TextStyle(
                         fontWeight: FontWeight.bold,
