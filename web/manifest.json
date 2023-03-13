@@ -1,6 +1,6 @@
 {
-    "name": "ruta_limpia",
-    "short_name": "ruta_limpia",
+    "name": "rutalimpia_frontend",
+    "short_name": "rutalimpia_frontend",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
