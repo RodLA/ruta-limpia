@@ -103,7 +103,7 @@ class _loginsreenState extends State<loginsreen> {
                       const SizedBox(height: 20,),
                       ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, "/first");
+                        Navigator.pushNamed(context, "/load");
                       },     
                       style: ButtonStyle(            
                         fixedSize: MaterialStateProperty.all(const Size(200, 50)),
