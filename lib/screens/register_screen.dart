@@ -87,7 +87,7 @@ class _registerscreenState extends State<registerscreen> {
                       const SizedBox(height: 20,),
                       ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, "/first");
+                        Navigator.pushNamed(context, "/sidebar");
                       },     
                       style: ButtonStyle(            
                         fixedSize: MaterialStateProperty.all(const Size(200, 50)),
