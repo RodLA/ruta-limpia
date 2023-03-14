@@ -21,11 +21,9 @@ class _registerscreenState extends State<registerscreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 49,),
-              Image.asset('assets/logo.png'),
-              const SizedBox(height: 15,),
-
               const SizedBox(height: 30,),
+              Image.asset('assets/logo.png'),
+
               Container(
                 height: 500,
                 width: 325,

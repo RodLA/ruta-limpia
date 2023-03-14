@@ -1,4 +1,4 @@
-package com.example.rutalimpia_frontend
+package com.example.ruta_limpia
 
 import io.flutter.embedding.android.FlutterActivity
 

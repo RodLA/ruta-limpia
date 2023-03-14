@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ruta_limpia/app/routes/routes.dart';
 
 
 
@@ -13,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 14, 218, 218),
+      backgroundColor: const Color.fromARGB(255,42, 202, 170),
       //appBar: AppBar(
         //title: const Text('textos')
         //),
@@ -37,14 +38,14 @@ class _HomePageState extends State<HomePage> {
             ),
             //Image.asset('assets/trashtruck_vistamain.png'),
             Padding(
-            padding: const EdgeInsets.only(bottom: 130.0),
-            child: Image.asset('assets/trashtruck_vistamain.png')
+            padding: const EdgeInsets.only(bottom: 90.0),
+            child: Image.asset('assets/trash_truck.png',width: 200)
             ),
 
             ElevatedButton(
               
               onPressed: () {
-                Navigator.pushNamed(context, "/first");
+                Navigator.pushNamed(context, Routes.PERMISSIONS);
               },
               
               style: ButtonStyle(            
@@ -85,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                 ),
             ),
             onPressed: () {
-              Navigator.pushNamed(context, "/login");
+              Navigator.pushNamed(context, Routes.LOGIN);
             },
             child: const Text('Iniciar Sesión',style: TextStyle(
               fontWeight: FontWeight.bold,

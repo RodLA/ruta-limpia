@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ruta_limpia/app/routes/routes.dart';
+
+import '../../../const/colors.dart';
 
 class loginsreen extends StatefulWidget {
   const loginsreen({super.key});
@@ -15,31 +18,16 @@ class _loginsreenState extends State<loginsreen> {
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color.fromARGB(255, 48, 218, 26),
-                Color.fromARGB(255, 13, 126, 38),
-                Color.fromARGB(255, 13, 187, 106),
-              ]
-            ) 
-          ),
+          color:ColorsMyApp.primarycolor, 
+          
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 80,),
-              Image.asset('assets/trashtruck.png'),
-              const SizedBox(height: 15,),
-              const Text('Ruta Limpia',style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-              ),
               const SizedBox(height: 30,),
+              Image.asset('assets/logo.png'),
+
               Container(
-                height: 600,
+                height: 560,
                 width: 325,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -94,7 +82,7 @@ class _loginsreenState extends State<loginsreen> {
                            
                             style: TextStyle(
                               
-                              color: Colors.orangeAccent[700]
+                              color: Colors.black
                               ),
                             )
                           ],
@@ -107,7 +95,7 @@ class _loginsreenState extends State<loginsreen> {
                       },     
                       style: ButtonStyle(            
                         fixedSize: MaterialStateProperty.all(const Size(200, 50)),
-                        backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 18, 184, 26)),
+                        backgroundColor: MaterialStateProperty.all(ColorsMyApp.primarycolor,),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
@@ -137,7 +125,7 @@ class _loginsreenState extends State<loginsreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(Icons.face,color: Colors.orangeAccent[700],),
+                          Icon(Icons.face,color: ColorsMyApp.primarycolor),
                         ],
                       ),
                        const Text('¿No tiene cuenta?',
@@ -152,11 +140,11 @@ class _loginsreenState extends State<loginsreen> {
                           ),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, "/register");
+                        Navigator.pushNamed(context, Routes.REGISTER);
                       },
                       child: const Text('Registrarse',style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.greenAccent,
+                        color: ColorsMyApp.primarycolor,
                         decoration: TextDecoration.underline,
                         
                       )

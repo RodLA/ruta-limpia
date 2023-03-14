@@ -5,8 +5,10 @@
 import FlutterMacOS
 import Foundation
 
-import rive_common
+import path_provider_foundation
+import sqflite
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  RivePlugin.register(with: registry.registrar(forPlugin: "RivePlugin"))
+  PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
+  SqflitePlugin.register(with: registry.registrar(forPlugin: "SqflitePlugin"))
 }
