@@ -23,31 +23,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: 
-      AnimatedSplashScreen(
-        splash: Image.asset(
-          'assets/camion.png',
+        debugShowCheckedModeBanner: false,
+        home: AnimatedSplashScreen(
+          splash: Image.asset(
+            'assets/camion.png',
+          ),
+          nextScreen: const HomePage(),
+          pageTransitionType: PageTransitionType.bottomToTop,
+          backgroundColor: const Color.fromARGB(255, 42, 202, 170),
+          duration: 6000,
         ),
-        nextScreen: const HomePage() ,
-        pageTransitionType: PageTransitionType.bottomToTop,
-        backgroundColor: const Color.fromARGB(255, 42,	202,	170),
-        duration: 6000,
-      ),
-      routes: {
-        '/first' :(context) => const firstscreen(),
-        '/login' :(context) => const loginsreen(),
-
-        '/register':(context) => const registerscreen(),
-        '/sidebar': (context) => const SideMenu() 
-
-        '/load' :(context) => const loadingpage()
-
-
-      }
-      
-    );
-    
+        routes: {
+          '/first': (context) => const firstscreen(),
+          '/login': (context) => const loginsreen(),
+          '/register': (context) => const registerscreen(),
+          '/sidebar': (context) => const SideMenu(),
+          '/load': (context) => const loadingpage()
+        });
   }
 }
 
@@ -58,7 +50,6 @@ class MyHomePage extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _MyHomePage();
   }
-  
 }
 
 class _MyHomePage extends State<MyHomePage> {
@@ -69,4 +60,3 @@ class _MyHomePage extends State<MyHomePage> {
     throw UnimplementedError();
   }
 }
-
