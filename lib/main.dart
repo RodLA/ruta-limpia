@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:rutalimpia_frontend/common/load_page.dart';
 import 'package:rutalimpia_frontend/screens/first_screen.dart';
 import 'package:rutalimpia_frontend/screens/home_page.dart';
 import 'package:page_transition/page_transition.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/first' :(context) => const firstscreen(),
-        '/login' :(context) => const loginsreen()
+        '/login' :(context) => const loginsreen(),
+        '/load' :(context) => const loadingpage()
 
       }
       
