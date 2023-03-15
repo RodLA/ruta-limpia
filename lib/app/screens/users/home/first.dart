@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               
               onPressed: () {
-                Navigator.pushNamed(context, Routes.PERMISSIONS);
+                Navigator.pushNamed(context, Routes.SPLASH);
               },
               
               style: ButtonStyle(            

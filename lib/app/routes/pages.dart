@@ -4,7 +4,8 @@ import 'package:ruta_limpia/app/screens/splash/splash_page.dart';
 import 'package:ruta_limpia/app/screens/users/Views/login_screen.dart';
 import 'package:ruta_limpia/app/screens/users/Views/register_screen.dart';
 import 'package:ruta_limpia/app/screens/users/citizen/citizen_map_screen.dart';
-import 'package:ruta_limpia/app/screens/users/home/home.dart';
+import 'package:ruta_limpia/app/screens/users/home/first.dart';
+
 import 'package:ruta_limpia/app/screens/users/home/home_screen.dart';
 import 'package:ruta_limpia/app/screens/users/request_permission/request_permission_screen.dart';
 
@@ -18,5 +19,6 @@ Map<String, Widget Function(BuildContext)> appRoutes(){
     Routes.LOGIN: (_) => const loginsreen(),
     Routes.REGISTER:(_) =>  const registerscreen(),
     Routes.HOME: (_) => const HomeScreen(),
+    
   };
 }

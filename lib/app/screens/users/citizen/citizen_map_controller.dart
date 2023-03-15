@@ -8,6 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 //?para que se actualice los markers se extendera ChangeNotifier
 class CitizenMapController extends ChangeNotifier {
+// Variable para controlar si se ha creado un marcador
 
   //! VAR
   final Map<MarkerId,Marker>  _markers = {};
@@ -46,35 +47,28 @@ class CitizenMapController extends ChangeNotifier {
   }
 
   //method async por el fromAssetImage
-  void onTap(LatLng position) async{
-
+ void onTap(LatLng position) async {
+  if (_markers.isEmpty) { // verifica si no hay marcadores
     final id = _markers.length.toString();
-    //constructor markerID
     final markerId = MarkerId(id);
 
     final icon = await _houseIcon.future;
 
-    //*Usa el constructor marker para llenar la variable
     final marker = Marker(
       markerId: markerId,
       position: position,
-
-      //*Para mover el marker
       draggable: true,
       icon: icon,
-
-      //*envia un emit del ID a la vista cuando se le da click al icono
       onTap: () {
         _markersController.sink.add(id);
       },
     );
-    
-    //*A la lista de markers en la posicion del ID se le agregara el obj marker creado
+
     _markers[markerId] = marker;
 
-    //?para llamar a actualizar los markers de la pagina SCREENS
     notifyListeners();
   }
+}
 
   @override
   void dispose() {
@@ -83,5 +77,4 @@ class CitizenMapController extends ChangeNotifier {
     _markersController.close();
     super.dispose();
   }
-
 }
