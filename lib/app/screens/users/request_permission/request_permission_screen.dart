@@ -16,6 +16,7 @@ class RequestPermissionScreen extends StatefulWidget {
 }
 
 class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
+<<<<<<< HEAD
   final _controller = RequestPermissionController(Permission.locationWhenInUse);
   late StreamSubscription _subscription;
 @override
@@ -42,6 +43,32 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
 
 
 // Aqui comienza el estilo
+=======
+  //retornar una instancia de la clase PermissionWithService
+  final _controller = RequestPermissionController(Permission.locationWhenInUse);
+  //late se utiliza para las variables que se inicializaran luego.
+  late StreamSubscription _subscription;
+
+  @override
+  void initState() {
+    super.initState();
+
+    //*escucha los cambios en el permiso de ubicacion del controlador
+    _subscription = _controller.onStatusChanged.listen((status) {
+      if (status == PermissionStatus.granted) {
+        Navigator.pushReplacementNamed(context, Routes.HOME);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    _controller.dispose();
+    super.dispose();
+  }
+
+>>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +90,10 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
             ),
             ElevatedButton(
               onPressed: () {
+<<<<<<< HEAD
                 // aquí va el botón 
+=======
+>>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
                 _controller.request();
               },
               style: ButtonStyle(

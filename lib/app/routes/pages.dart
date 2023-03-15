@@ -1,11 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:ruta_limpia/app/routes/routes.dart';
 import 'package:ruta_limpia/app/screens/splash/splash_page.dart';
+<<<<<<< HEAD
 import 'package:ruta_limpia/app/screens/users/Views/login_screen.dart';
 import 'package:ruta_limpia/app/screens/users/Views/register_screen.dart';
 import 'package:ruta_limpia/app/screens/users/citizen/citizen_map_screen.dart';
 import 'package:ruta_limpia/app/screens/users/home/first.dart';
 
+=======
+import 'package:ruta_limpia/app/screens/users/citizen/citizen_map_screen.dart';
+>>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
 import 'package:ruta_limpia/app/screens/users/home/home_screen.dart';
 import 'package:ruta_limpia/app/screens/users/request_permission/request_permission_screen.dart';
 
@@ -14,11 +18,16 @@ Map<String, Widget Function(BuildContext)> appRoutes(){
   return {
     Routes.SPLASH:(_) => const SplashPage(),
     Routes.PERMISSIONS: (_) => const RequestPermissionScreen(),
+<<<<<<< HEAD
     Routes.FIRST: (_) => const HomePage(),
     Routes.MAP_SELECT_HOUSE: (_) => const CitizenMapScreen(),
     Routes.LOGIN: (_) => const loginsreen(),
     Routes.REGISTER:(_) =>  const registerscreen(),
     Routes.HOME: (_) => const HomeScreen(),
     
+=======
+    Routes.HOME: (_) => const HomeScreen(),
+    Routes.MAP_SELECT_HOUSE: (_) => const CitizenMapScreen(),
+>>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
   };
 }

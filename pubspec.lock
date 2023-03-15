@@ -219,6 +219,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+<<<<<<< HEAD
   page_transition:
     dependency: transitive
     description:
@@ -227,6 +228,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.9"
+=======
+>>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
   path:
     dependency: transitive
     description:
