@@ -32,11 +32,7 @@ class MyApp extends StatelessWidget {
               surface: ColorsMyApp.surfacecolor,
               onSurface: ColorsMyApp.onsurfacecolor),
         ),
-<<<<<<< HEAD
       initialRoute: Routes.FIRST,
-=======
-      initialRoute: Routes.SPLASH,
->>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
       routes: appRoutes(),
     );
   }

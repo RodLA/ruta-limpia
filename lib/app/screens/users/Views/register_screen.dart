@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class registerscreen extends StatefulWidget {
-  const registerscreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<registerscreen> createState() => _registerscreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _registerscreenState extends State<registerscreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,27 +44,27 @@ class _registerscreenState extends State<registerscreen> {
                       const SizedBox(height: 10,),
                     
                       const SizedBox(height: 20,),
-                      Container(
+                      const SizedBox(
                         width: 250,
-                        child: const TextField(
+                        child: TextField(
                           decoration: InputDecoration(
                             labelText: 'Nombres y Apellidos',
                             
                           ),
                         ),
                       ),
-                       Container(
+                       const SizedBox(
                         width: 250,
-                        child: const TextField(
+                        child: TextField(
                           decoration: InputDecoration(
                             labelText: 'Correo',
                             
                           ),
                         ),
                       ),
-                      Container(
+                      const SizedBox(
                         width: 250,
-                        child: const TextField(
+                        child: TextField(
                           obscureText: true,
                           decoration: InputDecoration(
                             labelText: 'Contraseña',
@@ -72,9 +72,9 @@ class _registerscreenState extends State<registerscreen> {
                           ),
                         ),
                       ),
-                       Container(
+                       const SizedBox(
                         width: 250,
-                        child: const TextField(
+                        child: TextField(
                           obscureText: true,
                           decoration: InputDecoration(
                             labelText: 'Confirmar Contraseña', 
@@ -85,7 +85,7 @@ class _registerscreenState extends State<registerscreen> {
                       const SizedBox(height: 20,),
                       ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, "/sidebar");
+                        //? Navigator.pushNamed(context, "/sidebar");
                       },     
                       style: ButtonStyle(            
                         fixedSize: MaterialStateProperty.all(const Size(200, 50)),

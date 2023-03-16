@@ -8,10 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 //?para que se actualice los markers se extendera ChangeNotifier
 class CitizenMapController extends ChangeNotifier {
-<<<<<<< HEAD
 // Variable para controlar si se ha creado un marcador
-=======
->>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
 
   //! VAR
   final Map<MarkerId,Marker>  _markers = {};
@@ -34,10 +31,10 @@ class CitizenMapController extends ChangeNotifier {
   final _houseIcon = Completer<BitmapDescriptor>();
   CitizenMapController(){
     //'assets/house.png', width: 120, fromNetwork: false
+    //'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png',width: 120,fromNetwork: true
     imageToBytes(
-      'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png',
+      'assets/house.png',
       width: 120,
-      fromNetwork: true
     ).then((value) {
       final bitmap = BitmapDescriptor.fromBytes(value);
       _houseIcon.complete(bitmap);
@@ -50,58 +47,28 @@ class CitizenMapController extends ChangeNotifier {
   }
 
   //method async por el fromAssetImage
-<<<<<<< HEAD
  void onTap(LatLng position) async {
   if (_markers.isEmpty) { // verifica si no hay marcadores
     final id = _markers.length.toString();
-=======
-  void onTap(LatLng position) async{
-
-    final id = _markers.length.toString();
-    //constructor markerID
->>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
     final markerId = MarkerId(id);
 
     final icon = await _houseIcon.future;
 
-<<<<<<< HEAD
     final marker = Marker(
       markerId: markerId,
       position: position,
       draggable: true,
       icon: icon,
-=======
-    //*Usa el constructor marker para llenar la variable
-    final marker = Marker(
-      markerId: markerId,
-      position: position,
-
-      //*Para mover el marker
-      draggable: true,
-      icon: icon,
-
-      //*envia un emit del ID a la vista cuando se le da click al icono
->>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
       onTap: () {
         _markersController.sink.add(id);
       },
     );
-<<<<<<< HEAD
 
     _markers[markerId] = marker;
 
     notifyListeners();
   }
 }
-=======
-    
-    //*A la lista de markers en la posicion del ID se le agregara el obj marker creado
-    _markers[markerId] = marker;
-
-    //?para llamar a actualizar los markers de la pagina SCREENS
-    notifyListeners();
-  }
->>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
 
   @override
   void dispose() {
@@ -110,8 +77,4 @@ class CitizenMapController extends ChangeNotifier {
     _markersController.close();
     super.dispose();
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 01029af0622afc47e8f7e722ff51954a948c7228
 }
