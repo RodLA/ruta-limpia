@@ -25,11 +25,11 @@ class _registerscreenState extends State<registerscreen> {
               Image.asset('assets/logo.png'),
 
               Container(
-                height: 500,
+                height: 600,
                 width: 325,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10)
+                  borderRadius: BorderRadius.circular(20)
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

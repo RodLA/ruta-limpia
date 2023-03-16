@@ -27,11 +27,11 @@ class _loginsreenState extends State<loginsreen> {
               Image.asset('assets/logo.png'),
 
               Container(
-                height: 560,
+                height: 600,
                 width: 325,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10)
+                  borderRadius: BorderRadius.circular(20)
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,13 +51,13 @@ class _loginsreenState extends State<loginsreen> {
                         ),
                       ),
                       const SizedBox(height: 20,),
-                      Container(
+                     Container(
                         width: 250,
                         child: const TextField(
                           
                           decoration: InputDecoration(
                             labelText: 'Usuario',
-                            suffixIcon: Icon(Icons.person,
+                            suffixIcon: Icon(Icons.person,color: ColorsMyApp.primarycolor,
                             size: 17,),
                           ),
                         ),
@@ -67,14 +67,15 @@ class _loginsreenState extends State<loginsreen> {
                         child: const TextField(
                           obscureText: true,
                           decoration: InputDecoration(
+                            
                             labelText: 'Contraseña',
-                            suffixIcon: Icon(Icons.lock_outline,
+                            suffixIcon: Icon(Icons.lock_outline,color: ColorsMyApp.primarycolor,
                             size: 17,),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [

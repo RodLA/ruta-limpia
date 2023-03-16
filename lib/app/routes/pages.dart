@@ -11,7 +11,7 @@ import 'package:ruta_limpia/app/screens/users/request_permission/request_permiss
 //es una función que devuelve un mapa de rutas que se utilizará para la navegación en la aplicación
 Map<String, Widget Function(BuildContext)> appRoutes(){
   return {
-    Routes.SPLASH:(_) => const SplashPage(),
+    Routes.SPLASH:(_) =>  SplashPage(),
     Routes.PERMISSIONS: (_) => const RequestPermissionScreen(),
     Routes.FIRST: (_) => const HomePage(),
     Routes.MAP_SELECT_HOUSE: (_) => const CitizenMapScreen(),
