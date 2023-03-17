@@ -5,31 +5,46 @@ import 'package:flutter/widgets.dart' show ChangeNotifier;
 import 'package:ruta_limpia/app/helpers/image_to_bytes.dart';
 import 'package:ruta_limpia/app/utils/map_style.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
 //?para que se actualice los markers se extendera ChangeNotifier
 class CitizenMapController extends ChangeNotifier {
 // Variable para controlar si se ha creado un marcador
 
   //! VAR
-  final Map<MarkerId,Marker>  _markers = {};
-  
+  final Map<MarkerId, Marker> _markers = {};
+
   //convertir de un iterable marker a un set marker, devuelve una lista set de markers
   //retornar set de tipo marker - obtener => del objeto.values y convertir a set.
   //? metodo markers
   Set<Marker> get markers => _markers.values.toSet();
 
   //? stream de difusion (BROADCAST)
-  final _markersController = StreamController< String >.broadcast();
+  final _markersController = StreamController<String>.broadcast();
   //? Stream son como obserbables. para emitir y escuchar data.
   Stream<String> get onMarkerTap => _markersController.stream;
-  
-  final initialCameraPosition = const CameraPosition(
-    target: LatLng(-12.033120, -77.100181),
-    zoom: 15
-  );
+
+  Position? _initialPosition;
+  CameraPosition get initialCameraPosition => CameraPosition(
+      target: LatLng(_initialPosition!.latitude, _initialPosition!.longitude),
+      zoom: 15);
 
   final _houseIcon = Completer<BitmapDescriptor>();
-  CitizenMapController(){
+
+  bool _loading = true;
+  bool get loading => _loading;
+
+  late bool _gpsEnabled;
+  bool get gpsEnabled => _gpsEnabled;
+
+  StreamSubscription? _gpsSubscription, _positionSubscription;
+
+  CitizenMapController() {
+    _init();
+  }
+
+  Future<void> _init() async {
+    //?imagen marker
     //'assets/house.png', width: 120, fromNetwork: false
     //'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png',width: 120,fromNetwork: true
     imageToBytes(
@@ -42,8 +57,12 @@ class CitizenMapController extends ChangeNotifier {
   }
 
   //! METHODS
-  void onMapCreated(GoogleMapController controller){
-    controller.setMapStyle( mapStyle );
+  void onMapCreated(GoogleMapController controller) {
+    controller.setMapStyle(mapStyle);
+  }
+
+  Future<void> turnOnGPS() async {
+    Geolocator.openLocationSettings();
   }
 
   //method async por el fromAssetImage
@@ -72,6 +91,8 @@ class CitizenMapController extends ChangeNotifier {
 
   @override
   void dispose() {
+    _positionSubscription?.cancel();
+    _gpsSubscription?.cancel();
     //? cerrar el stream (emicion de data)
     //?cuando el screen de citizenController sea destruido se liberara el market controller
     _markersController.close();

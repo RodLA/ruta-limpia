@@ -15,7 +15,8 @@ class RequestPermissionScreen extends StatefulWidget {
       _RequestPermissionScreenState();
 }
 
-class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
+class _RequestPermissionScreenState extends State<RequestPermissionScreen> with WidgetsBindingObserver {
+  //retornar una instancia de la clase PermissionWithService
   final _controller = RequestPermissionController(Permission.locationWhenInUse);
   late StreamSubscription _subscription;
 @override
@@ -42,6 +43,23 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
 
 
 // Aqui comienza el estilo
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    //si la aplicacion vuelve de ajustes
+    if (state == AppLifecycleState.resumed && _fromSettings) {
+      final status = await _controller.check();
+      if(status == PermissionStatus.granted){
+        _goToHome();
+      }
+    }
+    _fromSettings = false;
+    
+  }
+
+  void _goToHome(){
+    Navigator.pushReplacementNamed(context, Routes.HOME);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
