@@ -17,8 +17,8 @@ Map<String, Widget Function(BuildContext)> appRoutes(){
     Routes.PERMISSIONS: (_) => const RequestPermissionScreen(),
     Routes.FIRST: (_) => const HomePage(),
     Routes.MAP_SELECT_HOUSE: (_) => const CitizenMapScreen(),
-    Routes.LOGIN: (_) => const loginsreen(),
-    Routes.REGISTER:(_) =>  const registerscreen(),
+    Routes.LOGIN: (_) => const LoginScreen(),
+    Routes.REGISTER:(_) =>  const RegisterScreen(),
     Routes.HOME: (_) => const HomeScreen(),
     Routes.CHARGE:(_) => const SplashScreen(),
   };
