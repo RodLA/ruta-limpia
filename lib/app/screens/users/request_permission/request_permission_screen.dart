@@ -15,29 +15,81 @@ class RequestPermissionScreen extends StatefulWidget {
       _RequestPermissionScreenState();
 }
 
-class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
+class _RequestPermissionScreenState extends State<RequestPermissionScreen> with WidgetsBindingObserver {
   //retornar una instancia de la clase PermissionWithService
   final _controller = RequestPermissionController(Permission.locationWhenInUse);
   //late se utiliza para las variables que se inicializaran luego.
   late StreamSubscription _subscription;
+  bool _fromSettings = false;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
 
     //*escucha los cambios en el permiso de ubicacion del controlador
     _subscription = _controller.onStatusChanged.listen((status) {
-      if (status == PermissionStatus.granted) {
-        Navigator.pushReplacementNamed(context, Routes.HOME);
+      
+      switch (status) {
+        case PermissionStatus.granted:
+          _goToHome();
+          break;
+        case PermissionStatus.permanentlyDenied:
+          //si el permiso fue denegado se le enviara ala configuracion del aplicativo
+          showDialog(context: context, builder: (_) => AlertDialog(
+            title: const Text("INFO"),
+            content: const Text("No se pudo acceder a la ubicacion del dispositio"),
+              actions: [
+                TextButton(onPressed: () async {
+                  Navigator.pop(context);
+                  _fromSettings = await openAppSettings();
+                }, child: const Text("Ir a configuraciones",
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                )),
+
+                TextButton(onPressed: (){
+                  Navigator.pop(context); 
+                }, child: const Text("Cancelar",
+                style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ))
+              ],
+          ) );
+          break;
+
+        default:
       }
     });
   }
 
+  
+
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _subscription.cancel();
     _controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    //si la aplicacion vuelve de ajustes
+    if (state == AppLifecycleState.resumed && _fromSettings) {
+      final status = await _controller.check();
+      if(status == PermissionStatus.granted){
+        _goToHome();
+      }
+    }
+    _fromSettings = false;
+    
+  }
+
+  void _goToHome(){
+    Navigator.pushReplacementNamed(context, Routes.HOME);
   }
 
   @override

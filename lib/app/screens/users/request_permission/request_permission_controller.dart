@@ -17,8 +17,13 @@ class RequestPermissionController{
   //crear un metodo stream de tipo get => (va retornar) un stream controller utilizando un stream
   Stream<PermissionStatus> get onStatusChanged => _StreamController.stream;
 
+  Future<PermissionStatus> check() async{
+    final status = await _locationPermission.status;
+    return status;
+  }
+
   //metodo para mostrar el formulario de permiso
-  request() async{
+  Future<void> request() async{
     final status = await _locationPermission.request();
     //metodo para emitir
     _notify(status);
