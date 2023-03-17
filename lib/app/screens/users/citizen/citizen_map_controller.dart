@@ -31,10 +31,10 @@ class CitizenMapController extends ChangeNotifier {
   final _houseIcon = Completer<BitmapDescriptor>();
   CitizenMapController(){
     //'assets/house.png', width: 120, fromNetwork: false
+    //'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png',width: 120,fromNetwork: true
     imageToBytes(
-      'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png',
+      'assets/house.png',
       width: 120,
-      fromNetwork: true
     ).then((value) {
       final bitmap = BitmapDescriptor.fromBytes(value);
       _houseIcon.complete(bitmap);

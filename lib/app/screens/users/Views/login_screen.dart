@@ -3,14 +3,14 @@ import 'package:ruta_limpia/app/routes/routes.dart';
 
 import '../../../const/colors.dart';
 
-class loginsreen extends StatefulWidget {
-  const loginsreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<loginsreen> createState() => _loginsreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _loginsreenState extends State<loginsreen> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,9 +51,9 @@ class _loginsreenState extends State<loginsreen> {
                         ),
                       ),
                       const SizedBox(height: 20,),
-                      Container(
+                      const SizedBox(
                         width: 250,
-                        child: const TextField(
+                        child: TextField(
                           
                           decoration: InputDecoration(
                             labelText: 'Usuario',
@@ -62,9 +62,9 @@ class _loginsreenState extends State<loginsreen> {
                           ),
                         ),
                       ),
-                      Container(
+                      const SizedBox(
                         width: 250,
-                        child: const TextField(
+                        child: TextField(
                           obscureText: true,
                           decoration: InputDecoration(
                             labelText: 'Contraseña',
@@ -74,10 +74,10 @@ class _loginsreenState extends State<loginsreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
+                          children: const [
                             Text('¿Olvidó su contraseña?',
                            
                             style: TextStyle(
@@ -122,10 +122,10 @@ class _loginsreenState extends State<loginsreen> {
                           fontWeight: FontWeight.bold
                         ),
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
+                        children: const [
                           Icon(Icons.face,color: ColorsMyApp.primarycolor),
                         ],
                       ),

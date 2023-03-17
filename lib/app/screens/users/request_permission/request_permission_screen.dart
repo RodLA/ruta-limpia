@@ -54,7 +54,7 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
               alignment: Alignment
                   .center, // Centra el texto vertical y horizontalmente
               child: const Text(
-                'Es necesario activar la ubicación del dispositivo para que el equipo de Ruta Limpia pueda brindarle la mejor experiencia.',
+                'Para calcular la mejor ruta del camión de basura cerca a su hogar es necesario conocer su ubicación. .',
                 textAlign: TextAlign.center, // Centra el texto horizontalmente
                 style: TextStyle(
                   fontSize: 24.0,
@@ -71,7 +71,7 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
                 backgroundColor:
                     MaterialStateProperty.all<Color>(ColorsMyApp.primarycolor),
               ),
-              child: const Text('Permitir acceso a mi ubicación'),
+              child: const Text('Permitir el acceso a mi ubicación actual'),
             ),
             const Text('ó'),
             ElevatedButton(
@@ -84,7 +84,7 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
                 backgroundColor:
                     MaterialStateProperty.all<Color>(const Color.fromARGB(0, 42, 202, 170)),
               ),
-              child: const Text('Seleccionar mi ubicación'),
+              child: const Text('Seleccionar mi ubicación actual'),
             ),
           ],
         ),
