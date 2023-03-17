@@ -14,7 +14,7 @@ class SplashController extends ChangeNotifier{
 
   Future<void> checkPermission() async{
     final isGranted = await _locationPermission.isGranted;
-    _routeName = isGranted?Routes.HOME:Routes.PERMISSIONS;
+    _routeName = isGranted?Routes.MAP_SELECT_HOUSE:Routes.PERMISSIONS;
     notifyListeners();
   }
 }

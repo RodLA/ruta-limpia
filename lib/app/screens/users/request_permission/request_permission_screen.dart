@@ -18,31 +18,63 @@ class RequestPermissionScreen extends StatefulWidget {
 class _RequestPermissionScreenState extends State<RequestPermissionScreen> with WidgetsBindingObserver {
   //retornar una instancia de la clase PermissionWithService
   final _controller = RequestPermissionController(Permission.locationWhenInUse);
+  //late se utiliza para las variables que se inicializaran luego.
   late StreamSubscription _subscription;
-@override
-  void initState() { 
-    super.initState();
-    _subscription= _controller.onStatusChanged.listen((status) {
-        if(status==PermissionStatus.granted){
-          Navigator.pushReplacementNamed(context, Routes.HOME);
-        }
-     },);
-  }
+  bool _fromSettings = false;
+
   @override
-  void dispose(){
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+
+    //*escucha los cambios en el permiso de ubicacion del controlador
+    _subscription = _controller.onStatusChanged.listen((status) {
+      
+      switch (status) {
+        case PermissionStatus.granted:
+          _goToHome();
+          break;
+        case PermissionStatus.permanentlyDenied:
+          //si el permiso fue denegado se le enviara ala configuracion del aplicativo
+          showDialog(context: context, builder: (_) => AlertDialog(
+            title: const Text("INFO"),
+            content: const Text("No se pudo acceder a la ubicacion del dispositio"),
+              actions: [
+                TextButton(onPressed: () async {
+                  Navigator.pop(context);
+                  _fromSettings = await openAppSettings();
+                }, child: const Text("Ir a configuraciones",
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                )),
+
+                TextButton(onPressed: (){
+                  Navigator.pop(context); 
+                }, child: const Text("Cancelar",
+                style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ))
+              ],
+          ) );
+          break;
+
+        default:
+      }
+    });
+  }
+
+  
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _subscription.cancel();
     _controller.dispose();
     super.dispose();
-
   }
 
-
-
-
-
-
-
-// Aqui comienza el estilo
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
     //si la aplicacion vuelve de ajustes
@@ -72,7 +104,7 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> with 
               alignment: Alignment
                   .center, // Centra el texto vertical y horizontalmente
               child: const Text(
-                'Para calcular la mejor ruta del camión de basura cerca a su hogar es necesario conocer su ubicación. .',
+                'Es necesario activar la ubicación del dispositivo para que el equipo de Ruta Limpia pueda brindarle la mejor experiencia.',
                 textAlign: TextAlign.center, // Centra el texto horizontalmente
                 style: TextStyle(
                   fontSize: 24.0,
@@ -81,7 +113,6 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> with 
             ),
             ElevatedButton(
               onPressed: () {
-                // aquí va el botón 
                 _controller.request();
               },
               style: ButtonStyle(
@@ -89,7 +120,7 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> with 
                 backgroundColor:
                     MaterialStateProperty.all<Color>(ColorsMyApp.primarycolor),
               ),
-              child: const Text('Permitir el acceso a mi ubicación actual'),
+              child: const Text('Permitir acceso a mi ubicación'),
             ),
             const Text('ó'),
             ElevatedButton(
@@ -102,7 +133,7 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> with 
                 backgroundColor:
                     MaterialStateProperty.all<Color>(const Color.fromARGB(0, 42, 202, 170)),
               ),
-              child: const Text('Seleccionar mi ubicación actual'),
+              child: const Text('Seleccionar mi ubicación'),
             ),
           ],
         ),
