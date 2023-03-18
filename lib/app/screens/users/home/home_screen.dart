@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ruta_limpia/app/routes/routes.dart';
 import 'package:ruta_limpia/app/screens/users/trace_route/track_simulation_citizen_screen.dart';
 
 import '../../../const/colors.dart';
@@ -35,22 +36,44 @@ class _HomeScreenState extends State<HomeScreen> {
       body: const TrackSimulationCitizenScreen(),
       drawer: Drawer(
         child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: ColorsMyApp.primarycolor,
-              ),
-              child: Text('Bienvenido a Ruta Limpia'),
-            ),
+  // Important: Remove any padding from the ListView.
+  padding: EdgeInsets.zero,
+  children: [
+    DrawerHeader(
+      decoration: BoxDecoration(
+        color: ColorsMyApp.primarycolor,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Bienvenido a Ruta Limpia'),
+          SizedBox(height: 10),
+          Image.asset(
+            'assets/trash_truck.png',
+            height: 67,
+          ),
+        ],
+      ),
+    ),
+    // Agrega el resto de tus elementos aquí
+
+
             ListTile(
-              title: const Text('Notificaciones'),
+              title: const Text('Inicio'),
               onTap: () {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushNamed(context,Routes.HOME);
+              },
+            ),
+            ListTile(
+              title: const Text('Informacion'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+               Navigator.pushNamed(context,Routes.DIARYROUTES);
               },
             ),
             ListTile(
@@ -59,7 +82,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+               Navigator.pushNamed(context,Routes.NOTIFICATION);
+              },
+            ),
+            ListTile(
+              title: const Text('Perfil'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+               Navigator.pushNamed(context,Routes.ACCOUNT);
               },
             ),
           ],

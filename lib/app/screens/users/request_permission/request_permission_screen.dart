@@ -71,7 +71,7 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
                 backgroundColor:
                     MaterialStateProperty.all<Color>(ColorsMyApp.primarycolor),
               ),
-              child: const Text('Permitir el acceso a mi ubicación actual'),
+              child: const Text('Permitir el acceso a mi ubicación actual', style: TextStyle(color: Colors.white),),
             ),
             const Text('ó'),
             ElevatedButton(
@@ -84,7 +84,7 @@ class _RequestPermissionScreenState extends State<RequestPermissionScreen> {
                 backgroundColor:
                     MaterialStateProperty.all<Color>(const Color.fromARGB(0, 42, 202, 170)),
               ),
-              child: const Text('Seleccionar mi ubicación actual'),
+              child: const Text('Seleccionar mi ubicación actual', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),

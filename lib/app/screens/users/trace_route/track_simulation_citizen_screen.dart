@@ -31,7 +31,7 @@ class _TrackSimulationCitizenScreenState
     target: LatLng(
       -12.226115, -76.940835
     ),
-    zoom: 15.4,
+    zoom: 15,
   );
 
   final Set<Marker> _markers = {};
