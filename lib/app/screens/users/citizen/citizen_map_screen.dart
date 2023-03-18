@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:ruta_limpia/app/const/colors.dart';
 import 'package:ruta_limpia/app/screens/users/citizen/citizen_map_controller.dart';
-import 'package:provider/provider.dart';
+import 'package:ruta_limpia/app/widgets/google_map.dart';
 
 import '../../../routes/routes.dart';
 
@@ -44,6 +43,20 @@ class CitizenMapScreen extends StatelessWidget {
               },
             ),
             title: const Text('Ruta Limpia'),
+            actions: [
+              Builder(builder: (context) => IconButton(
+                onPressed: (){
+                  final controller = context.read<CitizenMapController>();
+                  controller.newPolyline();
+                }, 
+                icon: const Icon(Icons.add) ),),
+              Builder(builder: (context) => IconButton(
+                onPressed: (){
+                  final controller = context.read<CitizenMapController>();
+                  controller.newPolygon();
+                }, 
+                icon: const Icon(Icons.map) ),)
+            ],
           ),
 
           //* GOOGLE MAPS
@@ -54,35 +67,7 @@ class CitizenMapScreen extends StatelessWidget {
               if (loading) {
                 return loadingWidget!;
               }
-              return Consumer<CitizenMapController>(
-                builder: (_, controller, gpsMessageWidget) {
-                  if (!controller.gpsEnabled) {
-                    return gpsMessageWidget!;
-                  }
-
-                  return GoogleMap(
-                    markers: controller.markers,
-                    onMapCreated: controller.onMapCreated,
-                    initialCameraPosition: controller.initialCameraPosition,
-                    onTap: controller.onTap,
-                    myLocationButtonEnabled: true,
-                    myLocationEnabled: true,
-                  );
-                },
-                child: Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text("Debe habilitar el GPS"),
-                      ElevatedButton(
-                          onPressed: () {
-                            final  controller = context.read<CitizenMapController>();
-                            controller.turnOnGPS();
-                          }, child: const Text("turn on gps"))
-                    ],
-                  ),
-                ),
-              );
+              return MapView() ;
             },
             child: const Center(
               child: CircularProgressIndicator(),
