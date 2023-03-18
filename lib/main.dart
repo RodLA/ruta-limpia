@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
               surface: ColorsMyApp.surfacecolor,
               onSurface: ColorsMyApp.onsurfacecolor),
         ),
-      initialRoute: Routes.HOME,
+      initialRoute: Routes.NOTIFICATION,
       routes: appRoutes(),
     );
   }

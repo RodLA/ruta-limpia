@@ -12,5 +12,8 @@ abstract class Routes{
   // ignore: constant_identifier_names
   static const LOGIN= '/login';
   static const REGISTER='/register';
-
+  static const ACCOUNT= '/account';
+  static const CHANGEPASSWORD= '/changepassword';
+  static const DIARYROUTES= '/diaryroutes';
+  static const NOTIFICATION= '/notification';
 }

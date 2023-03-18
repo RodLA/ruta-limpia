@@ -1,8 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:ruta_limpia/app/routes/routes.dart';
 import 'package:ruta_limpia/app/screens/splash/splash_page.dart';
+import 'package:ruta_limpia/app/screens/users/Views/account_screen.dart';
+import 'package:ruta_limpia/app/screens/users/Views/changepassword_screen.dart';
+import 'package:ruta_limpia/app/screens/users/Views/diary_screen.dart';
+
 import 'package:ruta_limpia/app/screens/users/Views/login_screen.dart';
+import 'package:ruta_limpia/app/screens/users/Views/notification_screen.dart';
 import 'package:ruta_limpia/app/screens/users/Views/register_screen.dart';
+
 import 'package:ruta_limpia/app/screens/users/citizen/citizen_map_screen.dart';
 import 'package:ruta_limpia/app/screens/users/home/home.dart';
 import 'package:ruta_limpia/app/screens/users/home/home_screen.dart';
@@ -18,5 +24,9 @@ Map<String, Widget Function(BuildContext)> appRoutes(){
     Routes.LOGIN: (_) => const loginsreen(),
     Routes.REGISTER:(_) =>  const registerscreen(),
     Routes.HOME: (_) => const HomeScreen(),
+    Routes.ACCOUNT: (_) => UserProfileScreen(),
+    Routes.CHANGEPASSWORD: (_) => ChangePasswordScreen(),
+    Routes.DIARYROUTES: (_) => AgendaScreen(),
+    Routes.NOTIFICATION: (_) => NuevaPantalla(),
   };
 }
