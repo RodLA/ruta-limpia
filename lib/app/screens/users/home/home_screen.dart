@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ruta_limpia/app/screens/users/trace_route/track_simulation_citizen_screen.dart';
 
 import '../../../const/colors.dart';
 
@@ -31,9 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         // ),
 
       ),
-      body: const Center(
-        child: Text('Bienvenido a ruta limpia!'),
-      ),
+      body: const TrackSimulationCitizenScreen(),
       drawer: Drawer(
         child: ListView(
           // Important: Remove any padding from the ListView.
@@ -43,10 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(
                 color: ColorsMyApp.primarycolor,
               ),
-              child: Text('Drawer Header'),
+              child: Text('Bienvenido a Ruta Limpia'),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: const Text('Notificaciones'),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -55,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
+              title: const Text('Notificaciones'),
               onTap: () {
                 // Update the state of the app
                 // ...
